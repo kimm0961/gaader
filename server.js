@@ -29,6 +29,7 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 
+expressApp.use(cors({ credentials: true, origin: "http://localhost:3001/admin" }));
 
 // App use
 
