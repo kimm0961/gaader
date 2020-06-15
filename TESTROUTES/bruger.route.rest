@@ -1,0 +1,30 @@
+GET http://localhost:5030/admin/bruger/tester
+
+###
+
+
+GET http://localhost:5030/admin/bruger
+
+###
+
+GET http://localhost:5030/admin/bruger/5ee21a597b817b48f4cb316a
+###
+POST http://localhost:5030/admin/bruger
+Content-Type: application/json
+
+{
+    "brugernavn": "karl",
+    "email": "karl@gmail.com",
+    "password": "seme"
+}
+
+###
+DELETE http://localhost:5030/admin/bruger/5ee213d31584480ba0ad5fc4
+###
+PATCH http://localhost:5030/admin/bruger/5ee21a597b817b48f4cb316a
+Content-Type: application/json
+
+{
+    "brugernavn": "Kim"
+}
+

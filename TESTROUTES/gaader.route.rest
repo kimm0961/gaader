@@ -1,0 +1,29 @@
+GET http://localhost:5030/gaader/tester
+
+###
+
+
+GET http://localhost:5030/gaader
+
+###
+
+GET http://localhost:5030/gaader/5ee0ac28de8f6e0a2c5a637b
+
+###
+POST http://localhost:5030/gaader/admin
+Content-Type: application/json
+
+{
+    "gaadeTekst": "surt",
+    "gaadeSvar": "citroner og mere"
+}
+
+###
+DELETE http://localhost:5030/gaader/admin/5ee0c8dda6995d2274022ec8
+###
+PATCH http://localhost:5030/gaader/admin/5ee0c8dda6995d2274022ec8
+Content-Type: application/json
+
+{
+    "gaadeTekst": "New overskrift"
+}

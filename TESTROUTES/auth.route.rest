@@ -1,0 +1,14 @@
+
+POST http://localhost:5030/auth/login
+Content-Type: application/json
+
+{
+    "email": "karl@gmail.com",
+    "password": "seme"
+}
+
+###
+GET http://localhost:5030/auth/logout
+
+###
+GET http://localhost:5030/auth/loggedin
