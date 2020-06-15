@@ -5,10 +5,6 @@ var session = require('express-session')
 var cors = require('cors')
 const app = express()
 
-// // Heroku
-// var FileStore = require('session-file-store')(session);
-// var FileStoreOptions = {};
-
 app.set('trust proxy', 1);
 
 // for at bruge mongo som store for session - isf hukommelsen som ikke dur på fx heroku
@@ -17,15 +13,11 @@ const MongoStore = require('connect-mongo')(session);
 
 const TWO_HOURS = 1000 * 60 * 60 * 2;
 
-// const {
-//     NODE_ENV = 'development',
-//     PORT = 5030,
-//     SESS_NAME = 'sid',
-//     SESS_SECRET = 'ssh!quiet,it\'asecret!',
-//     SESS_LIFETIME = TWO_HOURS
-// } = process.env
+const {
+    NODE_ENV = 'development',
+} = process.env
 
-// const IN_PROD = NODE_ENV === 'production'
+const IN_PROD = NODE_ENV === 'production'
 
 // Mongoose og DB
 const mongoose = require('mongoose')
@@ -50,16 +42,15 @@ app.use(express.urlencoded({extended: true})) // ellers er req.body undefined el
 
 // Session
 app.use(session({
-    name: SESS_NAME,
+    name: process.env.SESS_NAME,
     resave: false,
     saveUninitialized: false,
-    // store: new FileStore(FileStoreOptions),
     store: new MongoStore({mongooseConnection: db}),
-    secret: SESS_SECRET,
+    secret: process.env.SESS_SECRET,
     cookie: {
         maxAge: TWO_HOURS,
         sameSite: true,
-        // secure: IN_PROD
+        secure: IN_PROD
     }
 }))
 
@@ -89,4 +80,4 @@ app.use('/auth', authRouter)
 
 // PORT
 
-app.listen(PORT, () => console.log('Server Started' + PORT))
+app.listen(process.env.PORT, () => console.log('Server Started' + process.env.PORT))
