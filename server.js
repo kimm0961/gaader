@@ -53,16 +53,17 @@ app.use(session({
 
 //route indeholder ordet admin
 
-// app.use('*/admin', (req, res, next) => {
+app.use('*/admin', (req, res, next) => {
 
-//     // hvis der ikke er en session
-//     if (!req.session.userId) {
-//         return res.status(401).json({ message: 'Du har ikke adgang - skal være logget ind'})
-//     }
+    // hvis der ikke er en session
+    if (!req.session.userId) {
+        return res.status(401).json({ message: 'Du har ikke adgang - skal være logget ind'})
+    }
 
-//     // hvis der er en session... så bare fortsæt arbejdet
-//     next();
-// })
+    // hvis der er en session... så bare fortsæt arbejdet
+    console.log('der er session')
+    next();
+})
 
 // Routes
 
