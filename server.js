@@ -5,6 +5,12 @@ var session = require('express-session')
 var cors = require('cors')
 const app = express()
 
+// Heroku
+var FileStore = require('session-file-store')(session);
+var FileStoreOptions = {};
+
+app.set('trust proxy', 1);
+
 // for at bruge mongo som store for session - isf hukommelsen som ikke dur på fx heroku
 const MongoStore = require('connect-mongo')(session);
 
@@ -47,6 +53,7 @@ app.use(session({
     name: SESS_NAME,
     resave: false,
     saveUninitialized: false,
+    store: new FileStore(fileStoreOptions),
     store: new MongoStore({mongooseConnection: db}),
     secret: SESS_SECRET,
     cookie: {
