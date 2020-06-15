@@ -53,7 +53,7 @@ app.use(session({
     name: SESS_NAME,
     resave: false,
     saveUninitialized: false,
-    store: new FileStore(fileStoreOptions),
+    store: new FileStore(FileStoreOptions),
     store: new MongoStore({mongooseConnection: db}),
     secret: SESS_SECRET,
     cookie: {
