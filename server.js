@@ -53,7 +53,7 @@ app.use(session({
 
 //route indeholder ordet admin
 
-app.use('*/admin', (req, res, next) => {
+app.use('*/admin*', (req, res, next) => {
 
     // hvis der ikke er en session
     if (!req.session.userId) {
@@ -61,7 +61,6 @@ app.use('*/admin', (req, res, next) => {
     }
 
     // hvis der er en session... så bare fortsæt arbejdet
-    console.log('der er session')
     next();
 })
 
