@@ -17,15 +17,15 @@ const MongoStore = require('connect-mongo')(session);
 
 const TWO_HOURS = 1000 * 60 * 60 * 2;
 
-const {
-    NODE_ENV = 'development',
-    PORT = 5030,
-    SESS_NAME = 'sid',
-    SESS_SECRET = 'ssh!quiet,it\'asecret!',
-    SESS_LIFETIME = TWO_HOURS
-} = process.env
+// const {
+//     NODE_ENV = 'development',
+//     PORT = 5030,
+//     SESS_NAME = 'sid',
+//     SESS_SECRET = 'ssh!quiet,it\'asecret!',
+//     SESS_LIFETIME = TWO_HOURS
+// } = process.env
 
-const IN_PROD = NODE_ENV === 'production'
+// const IN_PROD = NODE_ENV === 'production'
 
 // Mongoose og DB
 const mongoose = require('mongoose')
@@ -57,9 +57,9 @@ app.use(session({
     store: new MongoStore({mongooseConnection: db}),
     secret: SESS_SECRET,
     cookie: {
-        maxAge: SESS_LIFETIME,
+        maxAge: TWO_HOURS,
         sameSite: true,
-        secure: IN_PROD
+        // secure: IN_PROD
     }
 }))
 
