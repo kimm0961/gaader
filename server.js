@@ -13,11 +13,8 @@ const MongoStore = require('connect-mongo')(session);
 
 const TWO_HOURS = 1000 * 60 * 60 * 2;
 
-const {
-    NODE_ENV = 'development',
-} = process.env
 
-const IN_PROD = NODE_ENV === 'production'
+const IN_PROD = process.env.NODE_ENV === 'production'
 
 // Mongoose og DB
 const mongoose = require('mongoose')
