@@ -1,27 +1,27 @@
-GET http://localhost:5030/admin/bruger/tester
+GET https://gaader-heroku.herokuapp.com/admin/bruger/tester
 
 ###
 
 
-GET http://localhost:5030/admin/bruger
+GET https://gaader-heroku.herokuapp.com/admin/bruger
 
 ###
 
-GET http://localhost:5030/admin/bruger/5ee21a597b817b48f4cb316a
+GET https://gaader-heroku.herokuapp.com/admin/bruger/5ee3542d7a8e4141841cf97a
 ###
-POST http://localhost:5030/admin/bruger
+POST https://gaader-heroku.herokuapp.com/admin/bruger
 Content-Type: application/json
 
 {
-    "brugernavn": "karl",
-    "email": "karl@gmail.com",
+    "brugernavn": "karli",
+    "email": "karli@gmail.com",
     "password": "seme"
 }
 
 ###
-DELETE http://localhost:5030/admin/bruger/5ee213d31584480ba0ad5fc4
+DELETE https://gaader-heroku.herokuapp.com/admin/bruger/5ee3542d7a8e4141841cf97a
 ###
-PATCH http://localhost:5030/admin/bruger/5ee21a597b817b48f4cb316a
+PATCH https://gaader-heroku.herokuapp.com/admin/bruger/5ee3542d7a8e4141841cf97a
 Content-Type: application/json
 
 {

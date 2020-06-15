@@ -1,16 +1,16 @@
-GET http://localhost:5030/gaader/tester
+GET https://gaader-heroku.herokuapp.com/gaader/tester
 
 ###
 
 
-GET http://localhost:5030/gaader
+GET https://gaader-heroku.herokuapp.com/gaader
 
 ###
 
-GET http://localhost:5030/gaader/5ee0ac28de8f6e0a2c5a637b
+GET https://gaader-heroku.herokuapp.com/gaader/5ee72d486ddb2c0017959737
 
 ###
-POST http://localhost:5030/gaader/admin
+POST https://gaader-heroku.herokuapp.com/gaader/admin
 Content-Type: application/json
 
 {
@@ -19,9 +19,9 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5030/gaader/admin/5ee0c8dda6995d2274022ec8
+DELETE https://gaader-heroku.herokuapp.com/gaader/admin/5ee72d486ddb2c0017959737
 ###
-PATCH http://localhost:5030/gaader/admin/5ee0c8dda6995d2274022ec8
+PATCH https://gaader-heroku.herokuapp.com/gaader/admin/5ee72d486ddb2c0017959737
 Content-Type: application/json
 
 {
