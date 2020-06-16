@@ -36,7 +36,7 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 
-app.use(cors({ credentials: true, origin: "https://gaader-front.herokuapp.com/" }));
+app.use(cors({ credentials: true, origin: "https://gaader-front.herokuapp.com" }));
 
 // App use
 
@@ -61,7 +61,7 @@ app.use(session({
 
 //route indeholder ordet admin
 
-app.use('*/admin*', (req, res, next) => {
+app.use('*/admin', (req, res, next) => {
 
     // hvis der ikke er en session
     if (!req.session.userId) {
