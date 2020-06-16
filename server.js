@@ -36,11 +36,11 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 
-app.use(cors({ credentials: true, origin: "https://gaader-front.herokuapp.com" }));
+// app.use(cors({ credentials: true }));
 
 // App use
 
-// app.use(cors()); // HUSK DENNE
+app.use(cors()); // HUSK DENNE
 app.use('/public',express.static('public')); // statiske filer - upload billder til backend
 app.use(express.json()) // nødevndig når post data er i json
 app.use(express.urlencoded({extended: true})) // ellers er req.body undefined eller tom
@@ -55,7 +55,7 @@ app.use(session({
     cookie: {
         maxAge: TWO_HOURS,
         sameSite: "none",
-        secure: "auto"
+        secure: IN_PROD
     }
 }))
 
