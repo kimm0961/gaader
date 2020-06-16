@@ -1,7 +1,6 @@
 // require('dotenv').config()
 
 const express = require('express')
-var bodyParser = require('body-parser');
 var session = require('express-session')
 var cors = require('cors')
 const app = express()
@@ -38,7 +37,6 @@ app.use(cors()); // HUSK DENNE
 app.use('/public',express.static('public')); // statiske filer - upload billder til backend
 app.use(express.json()) // nødevndig når post data er i json
 app.use(express.urlencoded({extended: true})) // ellers er req.body undefined eller tom
-app.use(bodyParser.urlencoded({extended: true}));
 
 // Session
 app.use(session({
@@ -49,7 +47,7 @@ app.use(session({
     secret: process.env.SESS_SECRET,
     cookie: {
         maxAge: TWO_HOURS,
-        sameSite: true,
+        sameSite: None,
         secure: IN_PROD
     }
 }))
