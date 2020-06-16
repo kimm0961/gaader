@@ -1,5 +1,5 @@
 
-POST https://gaader-heroku.herokuapp.com/auth/admin/login
+POST https://gaader-heroku.herokuapp.com/auth/login
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###
-GET https://gaader-heroku.herokuapp.com/auth/admin/logout
+GET https://gaader-heroku.herokuapp.com/auth/logout
 
 ###
-GET https://gaader-heroku.herokuapp.com/auth/admin/loggedin
+GET https://gaader-heroku.herokuapp.com/auth/loggedin

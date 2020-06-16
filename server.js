@@ -74,7 +74,7 @@ const gaaderRouter = require('./routes/gaader')
 app.use('/gaader', gaaderRouter)
 
 const authRouter = require('./routes/auth')
-app.use('/admin/auth', authRouter)
+app.use('/auth', authRouter)
 
 // PORT
 
