@@ -35,25 +35,25 @@ const MongoStore = require('connect-mongo')(session);
 
 const TWO_HOURS = 1000 * 60 * 60 * 2;
 
-const {
-    PORT = 3050,
-    NODE_ENV = 'development',
-    SESS_NAME = 'sid',
-    SESS_SECRET = 'ssh!quiet,it\'asecret!',
-    SESS_LIFETIME = TWO_HOURS
-} = process.env
+// const {
+//     PORT = 3050,
+//     NODE_ENV = 'development',
+//     SESS_NAME = 'sid',
+//     SESS_SECRET = 'ssh!quiet,it\'asecret!',
+//     SESS_LIFETIME = TWO_HOURS
+// } = process.env
 
-const IN_PROD = NODE_ENV === 'production'
+const IN_PROD = process.env.NODE_ENV === 'production'
 
 
 
 // Session
 app.use(session({
-    name: SESS_NAME,
+    name: process.env.SESS_NAME,
     resave: true,
     saveUninitialized: false,
     store: new MongoStore({mongooseConnection: db}),
-    secret: SESS_SECRET,
+    secret: process.env.SESS_SECRET,
     cookie: {
         maxAge: TWO_HOURS,
         sameSite: "none",
@@ -88,4 +88,4 @@ app.use('/auth', authRouter)
 
 // PORT
 
-app.listen(PORT, () => console.log('Server Started' + PORT))
+app.listen(process.env.PORT, () => console.log('Server Started' + process.env.PORT))
