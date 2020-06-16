@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config()
 
 const express = require('express')
 var session = require('express-session')
@@ -29,7 +29,7 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "https://gaader-front.herokuapp.com/" }));
 
 // App use
 
@@ -48,7 +48,7 @@ app.use(session({
     cookie: {
         maxAge: TWO_HOURS,
         sameSite: "none",
-        secure: false
+        secure: "auto"
     }
 }))
 
