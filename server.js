@@ -48,7 +48,7 @@ app.use(session({
     cookie: {
         maxAge: TWO_HOURS,
         sameSite: "none",
-        secure: "auto"
+        secure: false
     }
 }))
 
