@@ -29,11 +29,11 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 // App use
 
-// app.use(cors()); // HUSK DENNE
+app.use(cors()); // HUSK DENNE
 app.use('/public',express.static('public')); // statiske filer - upload billder til backend
 app.use(express.json()) // nødevndig når post data er i json
 app.use(express.urlencoded({extended: true})) // ellers er req.body undefined eller tom
@@ -74,7 +74,7 @@ const gaaderRouter = require('./routes/gaader')
 app.use('/gaader', gaaderRouter)
 
 const authRouter = require('./routes/auth')
-app.use('/auth', authRouter)
+app.use('/admin/auth', authRouter)
 
 // PORT
 
