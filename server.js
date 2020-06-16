@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 
 const express = require('express')
 var session = require('express-session')
@@ -13,8 +13,15 @@ const MongoStore = require('connect-mongo')(session);
 
 const TWO_HOURS = 1000 * 60 * 60 * 2;
 
+const {
+    PORT = 3050,
+    NODE_ENV = 'development',
+    SESS_NAME = 'sid',
+    SESS_SECRET = 'ssh!quiet,it\'asecret!',
+    SESS_LIFETIME = TWO_HOURS
+} = process.env
 
-const IN_PROD = process.env.NODE_ENV === 'production'
+const IN_PROD = NODE_ENV === 'production'
 
 // Mongoose og DB
 const mongoose = require('mongoose')
@@ -23,7 +30,7 @@ const mongoose = require('mongoose')
 // mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Atlas-databasen (remote)
-mongoose.connect(process.env.DATABASE_URL_ATLAS, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect('mongodb+srv://kimm0961:BofOpgor45@cluster0-rxmwo.azure.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
@@ -40,11 +47,11 @@ app.use(express.urlencoded({extended: true})) // ellers er req.body undefined el
 
 // Session
 app.use(session({
-    name: process.env.SESS_NAME,
+    name: SESS_NAME,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({mongooseConnection: db}),
-    secret: process.env.SESS_SECRET,
+    secret: SESS_SECRET,
     cookie: {
         maxAge: TWO_HOURS,
         sameSite: "none",
@@ -78,4 +85,4 @@ app.use('/auth', authRouter)
 
 // PORT
 
-app.listen(process.env.PORT, () => console.log('Server Started' + process.env.PORT))
+app.listen(PORT, () => console.log('Server Started' + PORT))
