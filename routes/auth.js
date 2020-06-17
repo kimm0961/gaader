@@ -39,7 +39,6 @@ router.get('/logout', async (req, res) => {
         }
         res.clearCookie(process.env.SESS_NAME)
         res.json({message : 'du er logget ud'})
-        res.redirect('/admin')
     })
 })
 
