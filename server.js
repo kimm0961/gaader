@@ -7,11 +7,11 @@ const app = express()
 // Mongoose og DB
 const mongoose = require('mongoose')
 
-// Localhost-databasen:
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+// // Localhost-databasen:
+// mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
-// // Atlas-databasen (remote)
-// mongoose.connect(process.env.DATABASE_URL_ATLAS, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+// Atlas-databasen (remote)
+mongoose.connect(process.env.DATABASE_URL_ATLAS, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
